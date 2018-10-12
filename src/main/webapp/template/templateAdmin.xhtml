@@ -1,0 +1,39 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="pt-BR"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <title><ui:insert name="title">Academico</ui:insert></title>
+        <link rel="shortcut icon" href="#{resource['images/favicon.jpg']}"
+		type="image/x-icon" />
+        <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css"/>
+        <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+
+        <f:facet name="first">
+            <h:outputStylesheet library="css" name="menu.css" />
+            <h:outputStylesheet library="css" name="style.default.css" />
+            <h:outputStylesheet library="css" name="sistema.css" />
+            <h:outputStylesheet library="css" name="footer.css" />
+            <h:outputStylesheet library="css" name="bootstrap.css" />
+            <h:outputScript name="js/jquery3.2.1.min.js" />
+        </f:facet>
+        <h:outputScript library="js" name="formatar.js" />
+
+
+    </h:head>
+    <h:body style="background-color: rgba(221, 232, 231, 0.8);" id="portfolio">
+        <!--
+             <ui:insert name="menu">
+                    <ui:include src="/admin/menu.xhtml" />
+                </ui:insert>  -->
+                <ui:insert name="principal">
+
+                </ui:insert>
+      
+        <!--        <ui:insert name="rodape">
+                    <ui:include src="/publico/footer.xhtml" />
+                </ui:insert>-->
+    </h:body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition template="template/templateAdmin.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui">
+
+
+    <ui:define name="principal">
+        <div class="container">
+            <h:form>
+
+                <legend>Cadastro de Clientes</legend>
+                <p:panel style="margin-bottom: 30px;"> 
+                    <h:panelGrid columns="1" id="Artistas">
+
+                        <h:outputLabel value="Nome:"></h:outputLabel>
+                        <p:inputText id="nm" value="#{alunoBean.al.nome}"
+                                     label="Nome" required="true" requiredMessage="O Campo Nome é obrigatório.">
+
+                        </p:inputText>
+                        <h:outputLabel value="CPF:"></h:outputLabel>
+                        <p:inputMask mask="999.999.999-99" id="cpf" size="25" 
+                                     value="#{alunoBean.al.cpf}" />
+                        <h:outputLabel value="Data de Nascimento:" ></h:outputLabel>
+                        <p:calendar locale="pt" showButtonPanel="true" navigator="true" value="#{alunoBean.al.dataNascimeto}"
+                                    id="ptCal" showOn="button"></p:calendar>
+
+
+
+
+
+
+                    </h:panelGrid>
+
+                    <p:commandButton value="Gravar" action="#{alunoBean.inserir()}"></p:commandButton>
+                </p:panel>
+            </h:form>
+        </div>
+    </ui:define>
+</ui:composition>

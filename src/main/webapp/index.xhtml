@@ -1,0 +1,56 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition template="template/templateAdmin.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui">
+ <h:outputStylesheet library="css" name="style.default.css" />
+    <ui:define name="principal">
+        <section class="login-block">
+            <div class="container">
+                 <h:form>
+                    <div class="col-md-4 login-sec">
+                        <h2 class="text-center">SEJA BEM VINDO AO SEU HISTORICO ACADÊMICO ONLINE</h2>
+                        <h:outputLabel value="#{alunoBean.al.sexo}"/>
+                            <div class="form-group">
+                                <label for="exampleInputEmail1" class="text-uppercase">Usuario</label>
+                                <h:inputText  class="form-control" value="#{usuBean.usu.tipo}"/>
+
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputPassword1" class="text-uppercase">Senha</label>
+                                <h:inputSecret class="form-control" value="#{usuBean.usu.senha}"/>
+                            </div>
+
+
+                            <div class="form-check">
+                                <h:commandButton  class="btn btn-login float-right" value="Logar" action="#{usuBean.inserir()}"/>
+                            </div>
+
+                        
+                        <div class="copy-text"> <h:commandLink value="Realizar Cadastro clique aqui" action="#{usuBean.inserir()}"/></div>
+                    </div>
+                    <div class="col-md-8 banner-sec">
+                        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                        
+                            <div class="carousel-inner " role="listbox">
+                                <div class="carousel-item active">
+                                   <h:graphicImage  library="images" name="pexels-photo-872957.jpeg" styleClass="d-block img-fluid"/>
+                                    <div class="carousel-caption d-none d-md-block">
+                                        <div class="banner-text">
+                                            <h2 class="text-warning">Não é aluno </h2>
+                                            <p >Não perca tempo faça uma visita e venha conhecer nosso serviços e a qualidade de nosso corpo docente </p>
+                                        </div>	
+                                    </div>
+                                </div>
+                            </div>	   
+                           
+                        </div>
+                    </div>
+               </h:form>
+            </div>
+        </section>
+    </ui:define>
+</ui:composition>

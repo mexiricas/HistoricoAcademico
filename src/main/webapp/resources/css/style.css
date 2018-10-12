@@ -1,0 +1,107 @@
+@CHARSET "UTF-8";
+
+@import 'https://fonts.googleapis.com/css?family=Kaushan+Script';
+
+.errors {
+	font-style: italic;
+	color: red;
+}
+
+.emphasis {
+	font-size: 1.3em;
+}
+#goTop {
+    position: fixed;
+    margin-left: 1000px;
+    top: 46%;
+    height: 74px;
+    right: 75px;
+    width: 85px;
+    opacity: 0;
+    cursor: pointer;
+    background: url(../resources/images/backToPtech.png) no-repeat;
+    -moz-transition: opacity 300ms linear;
+    -ms-transition: opacity 300ms linear;
+    transition: opacity 300ms linear;
+    -webkit-transition: opacity 300ms linear;
+    z-index: 9999;
+}
+.letra {
+	font-size: 22px;
+	font-family: 'Kaushan Script', cursive;
+}
+.column{
+	padding: 50px;
+	margin-right:100px;
+	width: 100px;
+}
+#cabecalho {
+	margin-top: 60px;
+	height: 10%;
+	widht: 100%;
+	text-align: center;
+	font-size: 32px;
+	font-weight: bold;
+}
+
+.cabecalhoGeral {
+	margin-top: 20px;
+	text-align: center;
+	font: 28px Arial, sans-serif;
+	font-weight: bold;
+	color: Snow;
+	background: #008B45;
+	border: 1px solid;
+	padding: 3px;
+}
+
+.cliente {
+	margin-left: 25%;
+	text-align: center;
+	border: 2px solid green;
+	white-space: nowrap;
+}
+
+.produto {
+	margin-left: 25%;
+	width: 700px;
+	text-align: center;
+	border: 2px solid green;
+	white-space: nowrap;
+}
+.ocultar{
+    display: none;
+}
+/* Definiï¿½ï¿½o de estilos para linha de cabeï¿½alho da tabela*/
+.cabecalho {
+	text-align: center;
+	font: 16px Arial, sans-serif;
+	font-weight: bold;
+	color: Snow;
+	background: #008B45;
+	border: 1px solid;
+	padding: 3px;
+}
+
+/* Definiï¿½ï¿½o de estilos para coluna */
+.codigo {
+	text-align: center;
+	font: 18px Arial, sans-serif;
+	background: #A2CD5A;
+	padding-left: 13px;
+	padding-right: 13px;
+	text-align: center;
+	border: solid 1px;
+	white-space: nowrap;
+}
+
+.nome {
+	font: 18px Arial, sans-serif;
+	text-align: center;
+	background: #BCEE68;
+	padding-left: 15px;
+	padding-right: 15px;
+	white-space: nowrap;
+	border: solid 1px;
+	white-space: nowrap;
+}
