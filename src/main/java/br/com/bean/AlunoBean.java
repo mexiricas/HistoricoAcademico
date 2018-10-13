@@ -25,7 +25,6 @@ public class AlunoBean implements Serializable {
     public String inserir() {
         AlunoDao alDao = new AlunoDao();
         alDao.valida(al);
-        alDao.inserir(al);
         
         return "index.xhtml";
     }
