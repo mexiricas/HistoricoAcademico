@@ -7,11 +7,13 @@ package br.com.bean;
 
 import br.com.dao.AlunoDao;
 import br.com.modelo.Aluno;
+import br.com.modelo.Usuario;
 import br.com.util.Utilidades;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
+
 /**
  *
  * @author Denis
@@ -22,6 +24,8 @@ public class AlunoBean implements Serializable {
     private Aluno al = new Aluno();
     private List<String> sx = new ArrayList<>();
     private Utilidades util = new Utilidades();
+    private Usuario us = new Usuario();
+
     public String inserir() {
 
         AlunoDao alDao = new AlunoDao();
@@ -30,9 +34,10 @@ public class AlunoBean implements Serializable {
         if (test == true) {
             System.out.println("test = true");
             alDao.inserir(al);
+            util.insertUsusarioAluno(us);
         } else {
             System.out.println("test == false");
-       }
+        }
 
         return "cadastro?faces-redirect=true";
     }
@@ -46,12 +51,13 @@ public class AlunoBean implements Serializable {
     }
 
     public List<String> getSx() {
+        sx.add("masculino");
+        sx.add("feminino");
         return sx;
     }
 
     public void setSx(List<String> sx) {
-        sx.add("masculino");
-        sx.add("feminino");
+        
         this.sx = sx;
     }
 
@@ -62,4 +68,13 @@ public class AlunoBean implements Serializable {
     public void setUtil(Utilidades util) {
         this.util = util;
     }
+
+    public Usuario getUs() {
+        return us;
+    }
+
+    public void setUs(Usuario us) {
+        this.us = us;
+    }
+
 }

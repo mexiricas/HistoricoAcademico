@@ -32,6 +32,12 @@
             <artifactId>primefaces</artifactId>
             <version>6.2</version>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/org.omnifaces/omnifaces -->
+        <dependency>
+            <groupId>org.omnifaces</groupId>
+            <artifactId>omnifaces</artifactId>
+            <version>1.11</version>
+        </dependency>
         <!-- CDI -->
         <dependency>
             <groupId>javax.enterprise</groupId>

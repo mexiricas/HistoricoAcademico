@@ -14,23 +14,42 @@
                 <legend>Cadastro de Clientes</legend>
                 <p:panel style="margin-bottom: 30px;"> 
                     <h:panelGrid columns="1" id="Artistas">
-
                         <h:outputLabel value="Nome:"></h:outputLabel>
                         <p:inputText id="nm" value="#{alunoBean.al.nome}"
                                      label="Nome" required="true" requiredMessage="O Campo Nome é obrigatório.">
-
                         </p:inputText>
+                        <h:outputLabel value="Email:"></h:outputLabel>
+                        <p:inputText id="email" value="#{alunoBean.al.email}" label="Email" ></p:inputText>
                         <h:outputLabel value="CPF:"></h:outputLabel>
-                        <p:inputMask mask="999.999.999-99" id="cpf" size="25" 
+                        <p:inputMask mask="999.999.999-99" id="cpf" size="14" required="true" requiredMessage="O Campo Nome é obrigatório."
                                      value="#{alunoBean.al.cpf}" />
+                        <h:outputLabel value="Telefone:"></h:outputLabel>
+                        <p:inputMask mask="(99)99999-9999" id="tel" size="14" 
+                                     value="#{alunoBean.al.telefone}" />
                         <h:outputLabel value="Data de Nascimento:" ></h:outputLabel>
                         <p:calendar locale="pt" showButtonPanel="true" navigator="true" value="#{alunoBean.al.dataNascimeto}"
                                     id="ptCal" showOn="button"></p:calendar>
-
-
-
-
-
+                        <h:outputLabel value="Endereço:"></h:outputLabel>
+                        <p:inputText id="end" value="#{alunoBean.al.endereco}"
+                                     label="Endereço" > </p:inputText>
+                        <h:outputLabel value="Genêro:"></h:outputLabel>
+                        <h:selectOneMenu styleClass="form-control" value="#{alunoBean.al.sexo}" converter="omnifaces.SelectItemsConverter">
+                            <f:selectItem noSelectionOption="true"
+                                          itemLabel="Selecione estado" />
+                            <f:selectItems value="#{alunoBean.sx}" var="sx"
+                                           itemValue="#{sx}" itemLabel="#{sx}" />
+                        </h:selectOneMenu>
+                        <p:separator/>
+                    </h:panelGrid>
+                    <h:panelGrid columns="1" id="logins">
+                        <h:outputLabel value="Login:"></h:outputLabel>
+                        <p:inputText id="lg" value="#{alunoBean.us.login}"
+                                     label="Login" required="true" requiredMessage="O Campo Nome é obrigatório.">
+                        </p:inputText>
+                        <h:outputLabel value="Senha:"></h:outputLabel>
+                        <p:inputText id="sn" value="#{alunoBean.us.senha}"
+                                     label="Senha" required="true" requiredMessage="O Campo Nome é obrigatório.">
+                        </p:inputText>
 
                     </h:panelGrid>
 

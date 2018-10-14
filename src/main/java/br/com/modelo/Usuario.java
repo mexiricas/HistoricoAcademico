@@ -32,15 +32,18 @@ public class Usuario implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Basic(optional = false)
+    @Basic(optional = true)
     @Column(name = "id_usu")
     private Integer idUsu;
-    @Basic(optional = false)
+    @Basic(optional = true)
     @Column(name = "tipo")
     private String tipo;
-    @Basic(optional = false)
+    @Basic(optional = true)
     @Column(name = "senha")
     private String senha;
+    @Basic(optional = true)
+    @Column(name = "login")
+    private String login;
 
     public Usuario() {
     }
@@ -77,6 +80,14 @@ public class Usuario implements Serializable {
 
     public void setSenha(String senha) {
         this.senha = senha;
+    }
+
+    public String getLogin() {
+        return login;
+    }
+
+    public void setLogin(String login) {
+        this.login = login;
     }
 
     @Override

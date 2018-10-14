@@ -40,7 +40,7 @@ public class Aluno implements Serializable {
     private String telefone;
     @Column(name = "email")
     private String email;
-    @Column(name = "data_nascimeto")
+    @Column(name = "data_nascimento")
     @Temporal(TemporalType.DATE)
     private Date dataNascimeto;
 
