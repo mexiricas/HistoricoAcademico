@@ -114,7 +114,9 @@ public class Aluno implements Serializable {
 
     @Override
     public String toString() {
-        return "br.com.historicoacademico.Tbaluno[ cpf=" + cpf + " ]";
+        return "Aluno{" + "cpf=" + cpf + ", nome=" + nome + ", sexo=" + sexo + ", endereco=" + endereco + ", telefone=" + telefone + ", email=" + email + ", dataNascimeto=" + dataNascimeto + '}';
     }
+
+
 
 }

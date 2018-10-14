@@ -5,9 +5,16 @@
  */
 package br.com.dao;
 
+import ConnectionFactory.MyConnectionPostgresSQL;
 import br.com.modelo.Aluno;
 import java.io.Serializable;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
 import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
 
@@ -18,6 +25,7 @@ import javax.persistence.Query;
 public class AlunoDao implements Serializable {
 
     private EntityManager entityManager;
+    private MyConnectionPostgresSQL connection = new MyConnectionPostgresSQL();
 
     public void inserir(Aluno al) {
 
@@ -31,16 +39,38 @@ public class AlunoDao implements Serializable {
     }
 
     public boolean valida(Aluno al) {
-        
-       entityManager = Persistence.createEntityManagerFactory("HistoricoAcademicoJPA").createEntityManager();
-        entityManager.getTransaction().begin();
-       Query query = entityManager.createQuery("SELECT l FROM tbaluno l Where l.cpf = '" + al.getCpf() + "'", Aluno.class);
-        
-        Aluno lv = (Aluno) query.getSingleResult();
-        if (lv.getCpf().isEmpty()) {
-            return false;
-        }
+
         entityManager.close();
         return true;
+    }
+
+    public List<Aluno> buscarEditora(Aluno al) {
+        List<Aluno> ls = new ArrayList<>();
+        if (connection.conecta() == false) {
+            System.out.println("Falha na conexão com o banco de dados");
+            return null;
+        }
+        try {
+            String sql = "SELECT * FROM TBALUNO T WHERE T.CPF = '" + al.getCpf() + "'";
+            Connection conexao = connection.getConnection();
+            PreparedStatement comando = conexao.prepareStatement(sql);
+            ResultSet rs = comando.executeQuery();
+            while (rs.next()) {
+                Aluno alu = new Aluno();
+                alu.setCpf(rs.getString("cpf"));
+                alu.setNome(rs.getString("nome"));
+                alu.setDataNascimeto(rs.getDate("data_nascimeto"));
+                ls.add(alu);
+            }
+            comando.close();
+            rs.close();
+
+        } catch (Exception e) {
+            System.out.println("Erro na consulta SQL");
+            System.out.println(e.getMessage());
+        }
+        connection.encerra();
+        return ls;
+
     }
 }
