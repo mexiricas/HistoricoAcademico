@@ -1,6 +1,6 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<ui:composition template="template/templateAdmin.xhtml"
+<ui:composition template="template/template.xhtml"
                 xmlns="http://www.w3.org/1999/xhtml"
                 xmlns:ui="http://java.sun.com/jsf/facelets"
                 xmlns:h="http://java.sun.com/jsf/html"
@@ -13,28 +13,22 @@
                  <h:form>
                     <div class="col-md-4 login-sec">
                         <h2 class="text-center">SEJA BEM VINDO AO SEU HISTORICO ACADÊMICO ONLINE</h2>
-                        <h:outputLabel value="#{alunoBean.al.sexo}"/>
+                        <h:outputLabel value="#{pessoaBean.al.sexo}"/>
                             <div class="form-group">
-                                <label for="exampleInputEmail1" class="text-uppercase">Usuario</label>
-                                <h:inputText  class="form-control" value="#{usuBean.usu.tipo}"/>
-
+                                <label for="exampleInputEmail1" class="text-uppercase">Login</label>
+                                <h:inputText  class="form-control" value="#{usuBean.usu.login}"/>
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputPassword1" class="text-uppercase">Senha</label>
                                 <h:inputSecret class="form-control" value="#{usuBean.usu.senha}"/>
                             </div>
-
-
                             <div class="form-check">
                                 <h:commandButton  class="btn btn-login float-right" value="Logar" action="#{usuBean.logar()}"/>
                             </div>
-
-                        
-                        <div class="copy-text"> <h:commandLink value="Realizar Cadastro clique aqui" action="#{usuBean.inserir()}"/></div>
+                        <div class="copy-text"> <h:commandLink value="Realizar Cadastro clique aqui" action="#{usuBean.inserirAluno()}"/></div>
                     </div>
                     <div class="col-md-8 banner-sec">
                         <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-                        
                             <div class="carousel-inner " role="listbox">
                                 <div class="carousel-item active">
                                    <h:graphicImage  library="images" name="pexels-photo-872957.jpeg" styleClass="d-block img-fluid"/>
@@ -45,8 +39,7 @@
                                         </div>	
                                     </div>
                                 </div>
-                            </div>	   
-                           
+                            </div>	
                         </div>
                     </div>
                </h:form>

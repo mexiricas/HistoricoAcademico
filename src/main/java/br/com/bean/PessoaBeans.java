@@ -5,8 +5,8 @@
  */
 package br.com.bean;
 
-import br.com.dao.AlunoDao;
-import br.com.modelo.Aluno;
+import br.com.dao.PessoaDao;
+import br.com.modelo.Pessoas;
 import br.com.modelo.Usuario;
 import br.com.util.Utilidades;
 import java.io.Serializable;
@@ -18,35 +18,48 @@ import javax.faces.bean.ManagedBean;
  *
  * @author Denis
  */
-@ManagedBean(name = "alunoBean")
-public class AlunoBean implements Serializable {
+@ManagedBean(name = "pessoaBean")
+public class PessoaBeans implements Serializable {
 
-    private Aluno al = new Aluno();
+    private Pessoas al = new Pessoas();
     private List<String> sx = new ArrayList<>();
     private Utilidades util = new Utilidades();
     private Usuario us = new Usuario();
 
-    public String inserir() {
+    public String inserirAluno() {
+        PessoaDao alDao = new PessoaDao();
+        boolean test = util.validaAluno(al);
+        us.setTipo("ROLE_ALUNO");
+        us.setCpf(al);
+        al.getUsuarioList().add(us);
+        if (test == true) {
+            alDao.inserirAluno(al);
+        } else {
+            System.out.println("test == false");
+        }
+        return "/cadastro?faces-redirect=true";
+    }
 
-        AlunoDao alDao = new AlunoDao();
-        boolean test = util.valida(al);
+    public String inserirAdm() {
+        PessoaDao alDao = new PessoaDao();
+        boolean test = util.validaAluno(al);
 
         if (test == true) {
             System.out.println("test = true");
-            alDao.inserir(al);
+            alDao.inserirAdm(al);
             util.insertUsusarioAluno(us);
         } else {
             System.out.println("test == false");
         }
 
-        return "cadastro?faces-redirect=true";
+        return "/cadastro?faces-redirect=true";
     }
 
-    public Aluno getAl() {
+    public Pessoas getAl() {
         return al;
     }
 
-    public void setAl(Aluno al) {
+    public void setAl(Pessoas al) {
         this.al = al;
     }
 
@@ -57,7 +70,7 @@ public class AlunoBean implements Serializable {
     }
 
     public void setSx(List<String> sx) {
-        
+
         this.sx = sx;
     }
 

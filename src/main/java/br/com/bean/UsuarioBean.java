@@ -5,8 +5,8 @@
  */
 package br.com.bean;
 
-import br.com.dao.AlunoDao;
-import br.com.modelo.Aluno;
+import br.com.dao.PessoaDao;
+import br.com.modelo.Pessoas;
 import br.com.modelo.Usuario;
 import br.com.util.Utilidades;
 import java.io.Serializable;
@@ -16,22 +16,27 @@ import javax.faces.bean.ManagedBean;
 public class UsuarioBean implements Serializable {
 
     private Usuario usu = new Usuario();
-    private Aluno al = new Aluno();
+    private Pessoas al = new Pessoas();
     private Utilidades util = new Utilidades();
 
-    public String inserir() {
+    public String inserirAluno() {
 
-        return "cadastro";
+        return "/cadastro?faces-redirect=true";
+    }
+
+    public String inserirAdm() {
+        System.out.println("passou");
+        return "/adm/cadastroAdm?faces-redirect=true";
     }
 
     public String logar() {
-        boolean test = util.valida(al);
+        boolean test = util.validaUsuario(usu);
 
         if (test == true) {
             return "index?faces-redirect=true";
         } else {
             return "/adm/indexAdm";
-            
+
         }
 
     }

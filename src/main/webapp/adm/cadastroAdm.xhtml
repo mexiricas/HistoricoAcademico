@@ -1,6 +1,6 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<ui:composition template="template/template.xhtml"
+<ui:composition template="/template/templateAdmin.xhtml"
                 xmlns="http://www.w3.org/1999/xhtml"
                 xmlns:ui="http://java.sun.com/jsf/facelets"
                 xmlns:h="http://java.sun.com/jsf/html"
@@ -11,9 +11,9 @@
     <ui:define name="principal">
         <div class="container">
             <h:form>
-                <legend>Cadastro de Aluno</legend>
+                <legend>Cadastro de Adminstrador</legend>
                 <p:panel style="margin-bottom: 30px;"> 
-                    <h:panelGrid columns="4" width="900" id="Artistas">
+                    <h:panelGrid columns="1" >
                         <h:outputLabel value="Nome:"></h:outputLabel>
                         <p:inputText id="nm" value="#{pessoaBean.al.nome}"
                                      label="Nome" required="true" requiredMessage="O Campo Nome é obrigatório.">
@@ -39,19 +39,23 @@
                             <f:selectItems value="#{pessoaBean.sx}" var="sx"
                                            itemValue="#{sx}" itemLabel="#{sx}" />
                         </h:selectOneMenu>
+                        <p:separator/>
                     </h:panelGrid>
-                    <p:separator/>
-                    <h:panelGrid columns="4" width="900">
+                    <h:panelGrid columns="1" id="logins">
                         <h:outputLabel value="Login:"></h:outputLabel>
-                        <p:inputText id="lgs" value="#{pessoaBean.us.login}"
-                                     label="login" required="true" requiredMessage="O Campo Nome é obrigatório.">
+                        <p:inputText id="lg" value="#{pessoaBean.us.login}"
+                                     label="Login" required="true" requiredMessage="O Campo Nome é obrigatório.">
                         </p:inputText>
                         <h:outputLabel value="Senha:"></h:outputLabel>
-                        <p:inputText id="snh" value="#{pessoaBean.us.senha}" label="senha" ></p:inputText>
+                        <p:password id="sn" value="#{pessoaBean.us.senha}"
+                                     label="Senha" required="true" requiredMessage="O Campo Nome é obrigatório.">
+                        </p:password>
+
                     </h:panelGrid>
-                    <p:commandButton value="Gravar" action="#{pessoaBean.inserirAluno()}"></p:commandButton>
+
+                    <p:commandButton value="Gravar" action="#{pessoaBean.inserirAdm()}"></p:commandButton>
                 </p:panel>
-            </h:form>
+             </h:form>
         </div>
     </ui:define>
 </ui:composition>

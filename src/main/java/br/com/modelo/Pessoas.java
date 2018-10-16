@@ -6,11 +6,16 @@
 package br.com.modelo;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -22,7 +27,7 @@ import javax.persistence.TemporalType;
 @Entity
 @Table(name = "tbaluno")
 
-public class Aluno implements Serializable {
+public class Pessoas implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -44,14 +49,14 @@ public class Aluno implements Serializable {
     @Temporal(TemporalType.DATE)
     private Date dataNascimeto;
 
-    public Aluno() {
+    public Pessoas() {
     }
 
-    public Aluno(String cpf) {
+    public Pessoas(String cpf) {
         this.cpf = cpf;
     }
 
-    public Aluno(String cpf, String nome) {
+    public Pessoas(String cpf, String nome) {
         this.cpf = cpf;
         this.nome = nome;
     }
@@ -117,6 +122,14 @@ public class Aluno implements Serializable {
         return "Aluno{" + "cpf=" + cpf + ", nome=" + nome + ", sexo=" + sexo + ", endereco=" + endereco + ", telefone=" + telefone + ", email=" + email + ", dataNascimeto=" + dataNascimeto + '}';
     }
 
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "cpf", fetch = FetchType.EAGER)
+    private List<Usuario> usuarioList = new ArrayList<Usuario>();;
 
+    public List<Usuario> getUsuarioList() {
+        return usuarioList;
+    }
 
+    public void setUsuarioList(List<Usuario> usuarioList) {
+        this.usuarioList = usuarioList;
+    }
 }

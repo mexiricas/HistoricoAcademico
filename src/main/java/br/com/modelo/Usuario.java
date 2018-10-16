@@ -12,6 +12,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
@@ -26,24 +28,25 @@ import javax.persistence.Table;
     @NamedQuery(name = "Usuario.findAll", query = "SELECT u FROM Usuario u")
     , @NamedQuery(name = "Usuario.findByIdUsu", query = "SELECT u FROM Usuario u WHERE u.idUsu = :idUsu")
     , @NamedQuery(name = "Usuario.findByTipo", query = "SELECT u FROM Usuario u WHERE u.tipo = :tipo")
+    , @NamedQuery(name = "Usuario.findByLogin", query = "SELECT u FROM Usuario u WHERE u.login = :login")
     , @NamedQuery(name = "Usuario.findBySenha", query = "SELECT u FROM Usuario u WHERE u.senha = :senha")})
 public class Usuario implements Serializable {
 
     private static final long serialVersionUID = 1L;
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = true)
     @Column(name = "id_usu")
-    private Integer idUsu;
+    private int idUsu;
     @Basic(optional = true)
     @Column(name = "tipo")
     private String tipo;
+    @Column(name = "login")
+    private String login;
     @Basic(optional = true)
     @Column(name = "senha")
     private String senha;
-    @Basic(optional = true)
-    @Column(name = "login")
-    private String login;
 
     public Usuario() {
     }
@@ -74,14 +77,6 @@ public class Usuario implements Serializable {
         this.tipo = tipo;
     }
 
-    public String getSenha() {
-        return senha;
-    }
-
-    public void setSenha(String senha) {
-        this.senha = senha;
-    }
-
     public String getLogin() {
         return login;
     }
@@ -90,9 +85,28 @@ public class Usuario implements Serializable {
         this.login = login;
     }
 
+    public String getSenha() {
+        return senha;
+    }
+
+    public void setSenha(String senha) {
+        this.senha = senha;
+    }
+
+    public Pessoas getCpf() {
+        return cpf;
+    }
+
+    public void setCpf(Pessoas cpf) {
+        this.cpf = cpf;
+    }
+
     @Override
     public String toString() {
         return "br.com.modelo.Usuario[ idUsu=" + idUsu + " ]";
     }
-    
+
+    @JoinColumn(name = "cpf", referencedColumnName = "cpf")
+    @ManyToOne(optional = true)
+    private Pessoas cpf;
 }

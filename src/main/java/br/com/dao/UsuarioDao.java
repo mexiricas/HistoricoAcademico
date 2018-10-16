@@ -8,7 +8,9 @@ package br.com.dao;
 import ConnectionFactory.MyConnectionPostgresSQL;
 import br.com.modelo.Usuario;
 import java.io.Serializable;
+import java.util.List;
 import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
 /**
@@ -30,5 +32,26 @@ public class UsuarioDao implements Serializable {
         entityManager.close();
 
     }
+   public List<Usuario> buscaUsuario(Usuario u ) {
+    EntityManagerFactory factory = Persistence
+            .createEntityManagerFactory("HistoricoAcademicoJPA");
+    entityManager = factory.createEntityManager();
+    entityManager.getTransaction().begin();
+    List<Usuario> listPersons = entityManager.createQuery(
+            "SELECT u FROM Usuario u WHERE u.login = '"+u.getLogin()+"' AND u.senha ='" + u.getSenha()+"'").getResultList();
+    entityManager.getTransaction().commit();
+    entityManager.close();
+    factory.close();
+    if (listPersons == null) {
+        System.out.println("No persons found . ");
+    } else {
+        for (Usuario usu : listPersons) {
+        System.out.print("Usuario login= " + usu.getLogin() + ", senha= '" + usu.getSenha()+"'");
+        }
+    }
+
+    return listPersons;
+    }
 
 }
+

@@ -6,7 +6,7 @@
 package br.com.dao;
 
 import ConnectionFactory.MyConnectionPostgresSQL;
-import br.com.modelo.Aluno;
+import br.com.modelo.Pessoas;
 import java.io.Serializable;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -22,12 +22,22 @@ import javax.persistence.Query;
  *
  * @author Denis
  */
-public class AlunoDao implements Serializable {
+public class PessoaDao implements Serializable {
 
     private EntityManager entityManager;
     private MyConnectionPostgresSQL connection = new MyConnectionPostgresSQL();
 
-    public void inserir(Aluno al) {
+    public void inserirAluno(Pessoas al) {
+
+        entityManager = Persistence.createEntityManagerFactory("HistoricoAcademicoJPA").createEntityManager();
+        entityManager.getTransaction().begin();
+        entityManager.persist(al);
+
+        entityManager.getTransaction().commit();
+        entityManager.close();
+
+    }
+    public void inserirAdm(Pessoas al) {
 
         entityManager = Persistence.createEntityManagerFactory("HistoricoAcademicoJPA").createEntityManager();
         entityManager.getTransaction().begin();
@@ -38,14 +48,8 @@ public class AlunoDao implements Serializable {
 
     }
 
-    public boolean valida(Aluno al) {
-
-        entityManager.close();
-        return true;
-    }
-
-    public List<Aluno> buscarEditora(Aluno al) {
-        List<Aluno> ls = new ArrayList<>();
+    public List<Pessoas> buscarAluno(Pessoas al) {
+        List<Pessoas> ls = new ArrayList<>();
         if (connection.conecta() == false) {
             System.out.println("Falha na conexão com o banco de dados");
             return null;
@@ -56,7 +60,7 @@ public class AlunoDao implements Serializable {
             PreparedStatement comando = conexao.prepareStatement(sql);
             ResultSet rs = comando.executeQuery();
             while (rs.next()) {
-                Aluno alu = new Aluno();
+                Pessoas alu = new Pessoas();
                 alu.setCpf(rs.getString("cpf"));
                 alu.setNome(rs.getString("nome"));
                 alu.setDataNascimeto(rs.getDate("data_nascimeto"));
