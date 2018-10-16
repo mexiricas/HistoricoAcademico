@@ -21,19 +21,19 @@ import javax.faces.bean.ManagedBean;
 @ManagedBean(name = "pessoaBean")
 public class PessoaBeans implements Serializable {
 
-    private Pessoas al = new Pessoas();
+    private Pessoas ps = new Pessoas();
     private List<String> sx = new ArrayList<>();
     private Utilidades util = new Utilidades();
     private Usuario us = new Usuario();
 
     public String inserirAluno() {
         PessoaDao alDao = new PessoaDao();
-        boolean test = util.validaAluno(al);
+        boolean test = util.validaAluno(ps);
         us.setTipo("ROLE_ALUNO");
-        us.setCpf(al);
-        al.getUsuarioList().add(us);
+        us.setCpf(ps);
+        ps.getUsuarioList().add(us);
         if (test == true) {
-            alDao.inserirAluno(al);
+            alDao.inserirPessoas(ps);
         } else {
             System.out.println("test == false");
         }
@@ -42,25 +42,24 @@ public class PessoaBeans implements Serializable {
 
     public String inserirAdm() {
         PessoaDao alDao = new PessoaDao();
-        boolean test = util.validaAluno(al);
-
+        boolean test = util.validaAluno(ps);
+        us.setTipo("ROLE_ADM");
+        us.setCpf(ps);
+        ps.getUsuarioList().add(us);
         if (test == true) {
-            System.out.println("test = true");
-            alDao.inserirAdm(al);
-            util.insertUsusarioAluno(us);
+            alDao.inserirPessoas(ps);
         } else {
             System.out.println("test == false");
         }
-
         return "/cadastro?faces-redirect=true";
     }
 
     public Pessoas getAl() {
-        return al;
+        return ps;
     }
 
     public void setAl(Pessoas al) {
-        this.al = al;
+        this.ps = al;
     }
 
     public List<String> getSx() {

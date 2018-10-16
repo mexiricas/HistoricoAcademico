@@ -13,7 +13,7 @@
             <h:form>
                 <legend>Cadastro de Aluno</legend>
                 <p:panel style="margin-bottom: 30px;"> 
-                    <h:panelGrid columns="4" width="900" id="Artistas">
+                    <h:panelGrid columns="1" id="Artistas">
                         <h:outputLabel value="Nome:"></h:outputLabel>
                         <p:inputText id="nm" value="#{pessoaBean.al.nome}"
                                      label="Nome" required="true" requiredMessage="O Campo Nome é obrigatório.">
@@ -41,13 +41,16 @@
                         </h:selectOneMenu>
                     </h:panelGrid>
                     <p:separator/>
+                    <legend>Cadastro de Usuario</legend>
+                    <br/>
                     <h:panelGrid columns="4" width="900">
+
                         <h:outputLabel value="Login:"></h:outputLabel>
                         <p:inputText id="lgs" value="#{pessoaBean.us.login}"
                                      label="login" required="true" requiredMessage="O Campo Nome é obrigatório.">
                         </p:inputText>
                         <h:outputLabel value="Senha:"></h:outputLabel>
-                        <p:inputText id="snh" value="#{pessoaBean.us.senha}" label="senha" ></p:inputText>
+                        <p:password id="snh" value="#{pessoaBean.us.senha}" label="senha" ></p:password>
                     </h:panelGrid>
                     <p:commandButton value="Gravar" action="#{pessoaBean.inserirAluno()}"></p:commandButton>
                 </p:panel>

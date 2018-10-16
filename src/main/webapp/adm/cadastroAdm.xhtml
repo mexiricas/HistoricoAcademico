@@ -13,7 +13,7 @@
             <h:form>
                 <legend>Cadastro de Adminstrador</legend>
                 <p:panel style="margin-bottom: 30px;"> 
-                    <h:panelGrid columns="1" >
+                    <h:panelGrid columns="1" id="Artistas">
                         <h:outputLabel value="Nome:"></h:outputLabel>
                         <p:inputText id="nm" value="#{pessoaBean.al.nome}"
                                      label="Nome" required="true" requiredMessage="O Campo Nome é obrigatório.">
@@ -39,23 +39,22 @@
                             <f:selectItems value="#{pessoaBean.sx}" var="sx"
                                            itemValue="#{sx}" itemLabel="#{sx}" />
                         </h:selectOneMenu>
-                        <p:separator/>
                     </h:panelGrid>
-                    <h:panelGrid columns="1" id="logins">
+                    <p:separator/>
+                    <legend>Cadastro de Usuario</legend>
+                    <br/>
+                    <h:panelGrid columns="4" width="900">
+
                         <h:outputLabel value="Login:"></h:outputLabel>
-                        <p:inputText id="lg" value="#{pessoaBean.us.login}"
-                                     label="Login" required="true" requiredMessage="O Campo Nome é obrigatório.">
+                        <p:inputText id="lgs" value="#{pessoaBean.us.login}"
+                                     label="login" required="true" requiredMessage="O Campo Nome é obrigatório.">
                         </p:inputText>
                         <h:outputLabel value="Senha:"></h:outputLabel>
-                        <p:password id="sn" value="#{pessoaBean.us.senha}"
-                                     label="Senha" required="true" requiredMessage="O Campo Nome é obrigatório.">
-                        </p:password>
-
+                        <p:password id="snh" value="#{pessoaBean.us.senha}" label="senha" ></p:password>
                     </h:panelGrid>
-
-                    <p:commandButton value="Gravar" action="#{pessoaBean.inserirAdm()}"></p:commandButton>
+                    <p:commandButton value="Gravar" action="#{pessoaBean.inserirAluno()}"></p:commandButton>
                 </p:panel>
-             </h:form>
+            </h:form>
         </div>
     </ui:define>
 </ui:composition>

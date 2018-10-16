@@ -27,17 +27,7 @@ public class PessoaDao implements Serializable {
     private EntityManager entityManager;
     private MyConnectionPostgresSQL connection = new MyConnectionPostgresSQL();
 
-    public void inserirAluno(Pessoas al) {
-
-        entityManager = Persistence.createEntityManagerFactory("HistoricoAcademicoJPA").createEntityManager();
-        entityManager.getTransaction().begin();
-        entityManager.persist(al);
-
-        entityManager.getTransaction().commit();
-        entityManager.close();
-
-    }
-    public void inserirAdm(Pessoas al) {
+    public void inserirPessoas(Pessoas al) {
 
         entityManager = Persistence.createEntityManagerFactory("HistoricoAcademicoJPA").createEntityManager();
         entityManager.getTransaction().begin();
