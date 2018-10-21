@@ -3,6 +3,8 @@
   <persistence-unit name="HistoricoAcademicoJPA" transaction-type="RESOURCE_LOCAL">
     <provider>org.hibernate.ejb.HibernatePersistence</provider>
     <class>br.com.modelo.Pessoas</class>
+    <class>br.com.modelo.Tbcurso</class>
+    <class>br.com.modelo.Disciplina</class>
     <properties>
       <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect"/>
       <!-- DB Dialect -->

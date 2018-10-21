@@ -22,6 +22,7 @@ public class UsuarioDao implements Serializable {
     private static final long serialVersionUID = 1L;
     private EntityManager entityManager;
     private MyConnectionPostgresSQL connection = new MyConnectionPostgresSQL();
+
     public void inserir(Usuario us) {
 
         entityManager = Persistence.createEntityManagerFactory("HistoricoAcademicoJPA").createEntityManager();
@@ -33,25 +34,25 @@ public class UsuarioDao implements Serializable {
 
     }
    public List<Usuario> buscaUsuario(Usuario u ) {
-    EntityManagerFactory factory = Persistence
-            .createEntityManagerFactory("HistoricoAcademicoJPA");
-    entityManager = factory.createEntityManager();
-    entityManager.getTransaction().begin();
+        EntityManagerFactory factory = Persistence
+                .createEntityManagerFactory("HistoricoAcademicoJPA");
+        entityManager = factory.createEntityManager();
+        entityManager.getTransaction().begin();
     List<Usuario> listPersons = entityManager.createQuery(
             "SELECT u FROM Usuario u WHERE u.login = '"+u.getLogin()+"' AND u.senha ='" + u.getSenha()+"'").getResultList();
-    entityManager.getTransaction().commit();
-    entityManager.close();
-    factory.close();
+        entityManager.getTransaction().commit();
+        entityManager.close();
+        factory.close();
     if (listPersons == null) {
-        System.out.println("No persons found . ");
-    } else {
+            System.out.println("No persons found . ");
+        } else {
         for (Usuario usu : listPersons) {
         System.out.print("Usuario login= " + usu.getLogin() + ", senha= '" + usu.getSenha()+"'");
         }
     }
 
     return listPersons;
-    }
+        }
 
-}
+    }
 

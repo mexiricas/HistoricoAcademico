@@ -1,0 +1,55 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition template="/template/templateAdmin.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui">
+
+
+    <ui:define name="principal">
+        <div class="container">
+            <h:form>
+                <p:panel style="margin-bottom: 30px;"> 
+                    <h:panelGrid columns="1" id="Artistas">
+                        <h:outputLabel value="Id:"></h:outputLabel>
+                        <p:outputLabel id="id" value="#{cursoBeans.cr.idCurso}"/>
+                        <h:outputLabel value="Nome do Curso:"></h:outputLabel>
+                        <p:outputLabel id="nm" value="#{cursoBeans.cr.nome}"/>
+                        <h:outputLabel value="Nome do Cordenador:"></h:outputLabel>
+                        <p:outputLabel id="cd" value="#{cursoBeans.cr.nomeCorde}"/>
+
+                        <h:outputLabel value="Telefone:"></h:outputLabel>
+                        <p:outputLabel value="#{cursoBeans.cr.telefoneCorde}"/> 
+                    </h:panelGrid>
+                    <p:separator/>
+
+
+
+                    <legend>Adicione as Disciplinas referente ao Curso</legend>
+                    <h:panelGrid columns="1" >
+
+                        <h:dataTable value="#{cursoBeans.cr.disciplinaList}" var="disc"
+                                     rules="rows">
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:commandButton value="Adicionar Disciplina"
+                                                     action="#{cursoBeans.inserirDisciplina()}" />
+                                </f:facet>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputLabel value="Nome da disciplina adicionada ao curso:" />
+                                </f:facet>
+                                <h:inputText value="#{disc.nomeDisc}" size="20" maxlength="20" />
+                            </h:column>
+                        </h:dataTable>
+
+                    </h:panelGrid>
+                    <p:commandButton value="Gravar" action="#{cursoBeans.salvarDisciplina()}"></p:commandButton>
+                </p:panel>
+            </h:form>
+        </div>
+    </ui:define>
+</ui:composition>

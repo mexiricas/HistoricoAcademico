@@ -122,8 +122,8 @@ public class Pessoas implements Serializable {
         return "Aluno{" + "cpf=" + cpf + ", nome=" + nome + ", sexo=" + sexo + ", endereco=" + endereco + ", telefone=" + telefone + ", email=" + email + ", dataNascimeto=" + dataNascimeto + '}';
     }
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "cpf", fetch = FetchType.EAGER)
-    private List<Usuario> usuarioList = new ArrayList<Usuario>();;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "cpf", fetch = FetchType.LAZY)
+    private List<Usuario> usuarioList = new ArrayList<Usuario>();
 
     public List<Usuario> getUsuarioList() {
         return usuarioList;

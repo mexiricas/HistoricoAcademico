@@ -22,18 +22,14 @@ public class Utilidades {
     private UsuarioDao usDao = new UsuarioDao();
 
     public boolean validaAluno(Pessoas al) {
-        List<Pessoas> ls = new ArrayList<Pessoas>();
-        ls = alDao.buscarAluno(al);
-        if (ls.isEmpty()) {
+        if (alDao.buscarAluno(al).isEmpty()) {
             return true;
         }
         return false;
     }
 
     public boolean validaUsuario(Usuario u) {
-        List<Usuario> ls = new ArrayList<Usuario>();
-        ls = usDao.buscaUsuario(u);
-        if (ls.isEmpty()) {
+        if (usDao.buscaUsuario(u) == null) {
             return true;
         }
         return false;

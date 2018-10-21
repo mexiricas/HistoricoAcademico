@@ -31,12 +31,12 @@ public class UsuarioBean implements Serializable {
 
     public String logar() {
         boolean test = util.validaUsuario(usu);
-
         if (test == true) {
             return "index?faces-redirect=true";
-        } else {
+        } else if (usu.getTipo().equalsIgnoreCase("ROLE_ALUNO")){
             return "/adm/indexAdm";
-
+        }else{
+            return "/aluno/index";
         }
 
     }

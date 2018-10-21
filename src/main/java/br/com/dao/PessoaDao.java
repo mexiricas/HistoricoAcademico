@@ -53,7 +53,7 @@ public class PessoaDao implements Serializable {
                 Pessoas alu = new Pessoas();
                 alu.setCpf(rs.getString("cpf"));
                 alu.setNome(rs.getString("nome"));
-                alu.setDataNascimeto(rs.getDate("data_nascimeto"));
+                alu.setDataNascimeto(rs.getDate("data_nascimento"));
                 ls.add(alu);
             }
             comando.close();

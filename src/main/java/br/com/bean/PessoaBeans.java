@@ -12,7 +12,9 @@ import br.com.util.Utilidades;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
+import javax.faces.context.FacesContext;
 
 /**
  *
@@ -21,37 +23,45 @@ import javax.faces.bean.ManagedBean;
 @ManagedBean(name = "pessoaBean")
 public class PessoaBeans implements Serializable {
 
+    private static final long serialVersionUID = 1L;
     private Pessoas ps = new Pessoas();
     private List<String> sx = new ArrayList<>();
     private Utilidades util = new Utilidades();
     private Usuario us = new Usuario();
 
     public String inserirAluno() {
+        FacesContext context = FacesContext.getCurrentInstance();
         PessoaDao alDao = new PessoaDao();
-        boolean test = util.validaAluno(ps);
-        us.setTipo("ROLE_ALUNO");
-        us.setCpf(ps);
-        ps.getUsuarioList().add(us);
-        if (test == true) {
+        if (util.validaAluno(ps)) {
+            us.setTipo("ROLE_ALUNO");
+            us.setCpf(ps);
+            ps.getUsuarioList().add(us);
             alDao.inserirPessoas(ps);
+            context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Sucesso",
+                    "Inserido com sucesso!"));
         } else {
-            System.out.println("test == false");
+            context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL, "Error",
+                    "Cadastro ja existente!"));
         }
-        return "/cadastro?faces-redirect=true";
+        return "cadastro?faces-redirect=true";
     }
 
     public String inserirAdm() {
+        FacesContext context = FacesContext.getCurrentInstance();
         PessoaDao alDao = new PessoaDao();
-        boolean test = util.validaAluno(ps);
-        us.setTipo("ROLE_ADM");
-        us.setCpf(ps);
-        ps.getUsuarioList().add(us);
-        if (test == true) {
+        if (util.validaAluno(ps)) {
+            us.setTipo("ROLE_ADM");
+            us.setCpf(ps);
+            ps.getUsuarioList().add(us);
             alDao.inserirPessoas(ps);
+            context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Sucesso",
+                    "Inserido com sucesso!"));
         } else {
-            System.out.println("test == false");
+            context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL, "Error",
+                    "Cadastro ja existente!"));
+
         }
-        return "/cadastro?faces-redirect=true";
+        return "/cadastroAdm?faces-redirect=true";
     }
 
     public Pessoas getAl() {

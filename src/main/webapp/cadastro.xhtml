@@ -11,6 +11,7 @@
     <ui:define name="principal">
         <div class="container">
             <h:form>
+                <p:growl id="growl" showDetail="true" />
                 <legend>Cadastro de Aluno</legend>
                 <p:panel style="margin-bottom: 30px;"> 
                     <h:panelGrid columns="1" id="Artistas">
@@ -21,7 +22,7 @@
                         <h:outputLabel value="Email:"></h:outputLabel>
                         <p:inputText id="email" value="#{pessoaBean.al.email}" label="Email" ></p:inputText>
                         <h:outputLabel value="CPF:"></h:outputLabel>
-                        <p:inputMask mask="999.999.999-99" id="cpf" size="14" required="true" requiredMessage="O Campo Nome é obrigatório."
+                        <p:inputMask mask="999.999.999-99" id="cpf" size="14" required="true" requiredMessage="O Campo CPF é obrigatório."
                                      value="#{pessoaBean.al.cpf}" />
                         <h:outputLabel value="Telefone:"></h:outputLabel>
                         <p:inputMask mask="(99)99999-9999" id="tel" size="14" 
@@ -47,12 +48,13 @@
 
                         <h:outputLabel value="Login:"></h:outputLabel>
                         <p:inputText id="lgs" value="#{pessoaBean.us.login}"
-                                     label="login" required="true" requiredMessage="O Campo Nome é obrigatório.">
+                                     label="login" required="true" requiredMessage="O Campo Login é obrigatório.">
                         </p:inputText>
                         <h:outputLabel value="Senha:"></h:outputLabel>
-                        <p:password id="snh" value="#{pessoaBean.us.senha}" label="senha" ></p:password>
+                        <p:password id="snh" value="#{pessoaBean.us.senha}" label="senha"
+                                    required="true" requiredMessage="O Campo Senha é obrigatório."></p:password>
                     </h:panelGrid>
-                    <p:commandButton value="Gravar" action="#{pessoaBean.inserirAluno()}"></p:commandButton>
+                    <p:commandButton value="Gravar" action="#{pessoaBean.inserirAluno()}" update="growl"></p:commandButton>
                 </p:panel>
             </h:form>
         </div>

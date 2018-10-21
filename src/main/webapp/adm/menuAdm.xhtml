@@ -19,10 +19,19 @@
                 </li>
                 <li class="nav-item"><h:commandLink value="Logar" action="#{usuBean.logar()}" class="nav-link"/></li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link  dropdown-toggle" href="#" data-toggle="dropdown">  Adminstrador  </a>
+                    <a class="nav-link  dropdown-toggle" href="#" data-toggle="dropdown">  Cadastros  </a>
                     <ul class="dropdown-menu">
                         <li><h:commandLink value="Cadastrar novo administrador" action="#{usuBean.inserirAdm()}" class="dropdown-item"/> </li>
                         <li><h:commandLink value="Cadastrar novo aluno " action="#{usuBean.inserirAluno()}" class="dropdown-item"/> </li>
+                        <li><h:commandLink value="Cadastrar novos Cursos" action="#{cursoBeans.cursoNew()}" class="dropdown-item"/> </li>
+                    </ul>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link  dropdown-toggle" href="#" data-toggle="dropdown">Editar  Cadastros  </a>
+                    <ul class="dropdown-menu">
+                        <li><h:commandLink value="Cadastrar novo administrador" action="#{usuBean.inserirAdm()}" class="dropdown-item"/> </li>
+                        <li><h:commandLink value="Cadastrar novo aluno " action="#{usuBean.inserirAluno()}" class="dropdown-item"/> </li>
+                        <li><h:commandLink value="Cursos cadastrados" action="#{cursoBeans.cursoNew()}" class="dropdown-item"/> </li>
                     </ul>
                 </li>
                 <li class="nav-item">

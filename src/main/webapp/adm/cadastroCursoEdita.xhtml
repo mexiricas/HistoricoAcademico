@@ -1,0 +1,34 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition template="/template/templateAdmin.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui">
+
+
+    <ui:define name="principal">
+        <div class="container">
+            <h:form>
+                <legend>Cadastro de Cursos</legend>
+                <p:panel style="margin-bottom: 30px;"> 
+                    <h:selectOneMenu styleClass="form-control" value="#{cursoBeans.cr}" converter="omnifaces.SelectItemsConverter">
+                        <f:selectItem noSelectionOption="true"
+                                      itemLabel="Selecione curso para ser editado" />
+                        <f:selectItems value="#{cursoBeans.lscursos}" var="cur"
+                                       itemValue="#{cur}" itemLabel="#{cur}" />
+                    </h:selectOneMenu>
+                    <p:separator/>
+                    <legend>Disciplinas relacionadas ao curso</legend>
+                    <h3>Grid Layout</h3>
+                    <h:selectManyCheckbox id="grid" value="#{cursoBeans.cr}" layout="grid" >
+                        <f:selectItems value="#{cursoBeans.lsdisc}" var="cur" itemLabel="#{cur}" itemValue="#{cur}" />
+                    </h:selectManyCheckbox>
+
+                    <p:commandButton value="Gravar" action="#{cursoBeans.inserirCurso()}"></p:commandButton>
+                </p:panel>
+            </h:form>
+        </div>
+    </ui:define>
+</ui:composition>
