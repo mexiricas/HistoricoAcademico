@@ -30,10 +30,9 @@ public class UsuarioBean implements Serializable {
     }
 
     public String logar() {
-        boolean test = util.validaUsuario(usu);
-        if (test == true) {
+        if (util.validaUsuario(usu) == null) {
             return "index?faces-redirect=true";
-        } else if (usu.getTipo().equalsIgnoreCase("ROLE_ALUNO")){
+        } else if (util.validaUsuario(usu).getTipo().equalsIgnoreCase("ROLE_ADM")){
             return "/adm/indexAdm";
         }else{
             return "/aluno/index";

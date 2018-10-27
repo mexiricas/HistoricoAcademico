@@ -28,11 +28,8 @@ public class Utilidades {
         return false;
     }
 
-    public boolean validaUsuario(Usuario u) {
-        if (usDao.buscaUsuario(u) == null) {
-            return true;
-        }
-        return false;
+    public Usuario validaUsuario(Usuario u) {
+        return usDao.buscaUsuario(u);
     }
 
     public void insertUsusarioAluno(Usuario us) {

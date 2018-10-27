@@ -33,26 +33,24 @@ public class UsuarioDao implements Serializable {
         entityManager.close();
 
     }
-   public List<Usuario> buscaUsuario(Usuario u ) {
+
+    public Usuario buscaUsuario(Usuario u) {
         EntityManagerFactory factory = Persistence
                 .createEntityManagerFactory("HistoricoAcademicoJPA");
         entityManager = factory.createEntityManager();
         entityManager.getTransaction().begin();
-    List<Usuario> listPersons = entityManager.createQuery(
-            "SELECT u FROM Usuario u WHERE u.login = '"+u.getLogin()+"' AND u.senha ='" + u.getSenha()+"'").getResultList();
+        Usuario usua = (Usuario) entityManager.createQuery(
+                "SELECT u FROM Usuario u WHERE u.login = '" + u.getLogin() + "' AND u.senha ='" + u.getSenha() + "'", Usuario.class).getSingleResult();
         entityManager.getTransaction().commit();
         entityManager.close();
         factory.close();
-    if (listPersons == null) {
+        if (usua == null) {
             System.out.println("No persons found . ");
         } else {
-        for (Usuario usu : listPersons) {
-        System.out.print("Usuario login= " + usu.getLogin() + ", senha= '" + usu.getSenha()+"'");
+
+            System.out.print("Usuario login= " + usua.getLogin() + ", senha= '" + usua.getSenha() + "'");
         }
+        return usua;
     }
 
-    return listPersons;
-        }
-
-    }
-
+}
