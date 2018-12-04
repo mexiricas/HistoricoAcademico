@@ -11,33 +11,42 @@ import br.com.modelo.Usuario;
 import br.com.util.Utilidades;
 import java.io.Serializable;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
 
+@SessionScoped
 @ManagedBean(name = "usuBean")
 public class UsuarioBean implements Serializable {
 
+    private static final long serialVersionUID = 1L;
     private Usuario usu = new Usuario();
     private Pessoas al = new Pessoas();
     private Utilidades util = new Utilidades();
 
-    public String inserirAluno() {
+    public String sair() {
+        usu = new Usuario();
+        al = new Pessoas();
+        return "/public/index";
+    }
 
-        return "/cadastro?faces-redirect=true";
+    public String inserirAluno() {
+        return "/public/cadastro?faces-redirect=true";
     }
 
     public String inserirAdm() {
-        System.out.println("passou");
         return "/adm/cadastroAdm?faces-redirect=true";
     }
 
     public String logar() {
-        if (util.validaUsuario(usu) == null) {
-            return "index?faces-redirect=true";
-        } else if (util.validaUsuario(usu).getTipo().equalsIgnoreCase("ROLE_ADM")){
-            return "/adm/indexAdm";
-        }else{
-            return "/aluno/index";
+        usu = util.validaUsuario(usu);
+        if (usu.getTipo() != null) {
+            if (usu.getTipo().equalsIgnoreCase("ROLE_ADM")) {
+                return "/adm/indexAdm";
+            } else if (usu.getTipo().equalsIgnoreCase("ROLE_ALUNO")) {
+                return "/aluno/indexAluno";
+            }
         }
-
+        usu = new Usuario();
+        return "/public/index";
     }
 
     //getter e setter

@@ -5,6 +5,7 @@
  */
 package ConnectionFactory;
 
+import java.io.Serializable;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -13,7 +14,7 @@ import java.sql.SQLException;
  *
  * @author Denis
  */
-public class MyConnectionPostgresSQL {
+public class MyConnectionPostgresSQL implements Serializable{
      private Connection connection;
 
     public Connection getConnection() {

@@ -7,36 +7,34 @@
      xmlns:h="http://java.sun.com/jsf/html"
      xmlns:f="http://java.sun.com/jsf/core"
      xmlns:p="http://primefaces.org/ui">
+
+    <a class="navbar-brand" href="#"> <img class="logo" src="http://bootstrap-ecommerce.com/main/images/logo-white.png" height="40"/></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar1" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
     <h:form>
-        <a class="navbar-brand" href="#"> <img class="logo" src="http://bootstrap-ecommerce.com/main/images/logo-white.png" height="40"/> LOGO</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar1" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbar1">
-            <ul class="navbar-nav ml-auto"> 
-                <li class="nav-item active">
-                    <h:commandLink value="HOME" action="/index" class="nav-link"/>
-                </li>
-                <li class="nav-item"><h:commandLink value="Logar" action="#{usuBean.logar()}" class="nav-link"/></li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link  dropdown-toggle" href="#" data-toggle="dropdown">  Cadastros  </a>
-                    <ul class="dropdown-menu">
-                        <li><h:commandLink value="Cadastrar novo administrador" action="#{usuBean.inserirAdm()}" class="dropdown-item"/> </li>
-                        <li><h:commandLink value="Cadastrar novo aluno " action="#{usuBean.inserirAluno()}" class="dropdown-item"/> </li>
-                        <li><h:commandLink value="Cadastrar novos Cursos" action="#{cursoBeans.cursoNew()}" class="dropdown-item"/> </li>
-                    </ul>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link  dropdown-toggle" href="#" data-toggle="dropdown">Editar  Cadastros  </a>
-                    <ul class="dropdown-menu">
-                        <li><h:commandLink value="Cadastrar novo administrador" action="#{usuBean.inserirAdm()}" class="dropdown-item"/> </li>
-                        <li><h:commandLink value="Cadastrar novo aluno " action="#{usuBean.inserirAluno()}" class="dropdown-item"/> </li>
-                        <li><h:commandLink value="Cursos cadastrados" action="#{cursoBeans.cursoNew()}" class="dropdown-item"/> </li>
-                    </ul>
-                </li>
-                <li class="nav-item">
-                    <a class="btn ml-2 btn-warning" href="http://bootstrap-ecommerce.com">Download</a></li>
-            </ul>
-        </div>
+        <ul class="navbar-nav ml-auto" > 
+            <li class="nav-item active">
+                <h:commandLink value="HOME" action="/public/index" class="nav-link"/>
+            </li>
+            <li class="nav-item"><h:commandLink value="Logar" action="#{usuBean.sair()}" class="nav-link"/></li>
+            <li class="nav-item dropdown">
+                <a class="nav-link  dropdown-toggle" href="#" data-toggle="dropdown">  Cadastros  &amp; Matriculas</a>
+                <ul class="dropdown-menu">
+                    <li><h:commandLink value="Matricular Aluno" action="/adm/matricula" class="dropdown-item"/> </li>
+                    <li><h:commandLink value="Cadastrar novo administrador" action="#{usuBean.inserirAdm()}" class="dropdown-item"/> </li>
+                    <li><h:commandLink value="Cadastrar novo aluno " action="#{usuBean.inserirAluno()}" class="dropdown-item"/> </li>
+                    <li><h:commandLink value="Cadastrar novos Cursos" action="#{cursoBeans.cursoNew()}" class="dropdown-item"/> </li>
+                </ul>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link  dropdown-toggle" href="#" data-toggle="dropdown">Editar  Cadastros  </a>
+                <ul class="dropdown-menu">
+                    <li><h:commandLink value="Cadastrar novo administrador" action="#{usuBean.inserirAdm()}" class="dropdown-item"/> </li>
+                    <li><h:commandLink value="Cadastrar novo aluno " action="#{usuBean.inserirAluno()}" class="dropdown-item"/> </li>
+                    <li><h:commandLink value="Cursos cadastrados" action="#{cursoBeans.cursoNew()}" class="dropdown-item"/> </li>
+                </ul>
+            </li>
+        </ul>
     </h:form>
 </nav>

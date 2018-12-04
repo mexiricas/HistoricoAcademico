@@ -1,0 +1,31 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="margin-bottom: 0px;"
+     xmlns="http://www.w3.org/1999/xhtml"
+     xmlns:ui="http://java.sun.com/jsf/facelets"
+     xmlns:h="http://java.sun.com/jsf/html"
+     xmlns:f="http://java.sun.com/jsf/core"
+     xmlns:p="http://primefaces.org/ui">
+    <h:form>
+        <a class="navbar-brand" href="#"> <img class="logo" src="http://bootstrap-ecommerce.com/main/images/logo-white.png" height="40"/></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar1" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbar1">
+            <ul class="navbar-nav ml-auto"> 
+                <li class="nav-item active">
+                    <h:commandLink value="HOME" action="/public/index" class="nav-link"/>
+                </li>
+                <li class="nav-item"><h:commandLink value="Logar" action="#{usuBean.sair()}" class="nav-link"/></li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link  dropdown-toggle" href="#" data-toggle="dropdown">  Consultas   </a>
+                    <ul class="dropdown-menu">
+                        <li><h:commandLink value="Notas Semestrais" action="#{usuBean.inserirAdm()}" class="dropdown-item"/> </li>
+                    </ul>
+                </li>
+
+            </ul>
+        </div>
+    </h:form>
+</nav>

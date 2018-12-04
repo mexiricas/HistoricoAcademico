@@ -33,7 +33,6 @@ public class CursosBeans implements Serializable {
     }
 
     public String editarCursoNew() {
-        cr = new Tbcurso();
         return "cadastroCursoEdita?faces-redirect=true";
     }
 
@@ -63,6 +62,11 @@ public class CursosBeans implements Serializable {
         this.cr = cr;
     }
 
+    public void selectDisc(Tbcurso c) {
+        System.out.println("passou");
+        cr = c;
+    }
+
     public List<Disciplina> getLsdisc() {
         lsdisc = cr.getDisciplinaList();
         return lsdisc;
@@ -70,7 +74,9 @@ public class CursosBeans implements Serializable {
 
     public List<Tbcurso> getLscursos() {
         CursoDao crDao = new CursoDao();
+        cr = new Tbcurso();
         lscursos = crDao.buscarIdCurso(cr);
+
         return lscursos;
     }
 

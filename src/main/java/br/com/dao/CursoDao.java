@@ -55,12 +55,12 @@ public class CursoDao implements Serializable {
         List<Tbcurso> lisCursos;
         entityManager = factory.createEntityManager();
         entityManager.getTransaction().begin();
-        if (c.getNome() != null) {
-            lisCursos = entityManager.createQuery(
-                    "SELECT t FROM Tbcurso t WHERE t.nome = '" + c.getNome() + "' AND t.nomeCorde = '" + c.getNomeCorde() + "'").getResultList();
-        } else {
+        if (c.getNome() == null) {
             lisCursos = entityManager.createQuery(
                     "SELECT t FROM Tbcurso t").getResultList();
+        } else {
+            lisCursos = entityManager.createQuery(
+                    "SELECT t FROM Tbcurso t WHERE t.nome = '" + c.getNome() + "' AND t.nomeCorde = '" + c.getNomeCorde() + "'").getResultList();
 
         }
         entityManager.getTransaction().commit();

@@ -35,21 +35,20 @@ public class UsuarioDao implements Serializable {
     }
 
     public Usuario buscaUsuario(Usuario u) {
+        Usuario usua = new Usuario();
         EntityManagerFactory factory = Persistence
                 .createEntityManagerFactory("HistoricoAcademicoJPA");
-        entityManager = factory.createEntityManager();
-        entityManager.getTransaction().begin();
-        Usuario usua = (Usuario) entityManager.createQuery(
-                "SELECT u FROM Usuario u WHERE u.login = '" + u.getLogin() + "' AND u.senha ='" + u.getSenha() + "'", Usuario.class).getSingleResult();
-        entityManager.getTransaction().commit();
+        try {
+            entityManager = factory.createEntityManager();
+            entityManager.getTransaction().begin();
+            usua = (Usuario) entityManager.createQuery(
+                    "SELECT u FROM Usuario u WHERE u.login = '" + u.getLogin() + "' AND u.senha ='" + u.getSenha() + "'", Usuario.class).getSingleResult();
+            entityManager.getTransaction().commit();
+        } catch (Exception e) {
+            System.out.println("no person");
+        }
         entityManager.close();
         factory.close();
-        if (usua == null) {
-            System.out.println("No persons found . ");
-        } else {
-
-            System.out.print("Usuario login= " + usua.getLogin() + ", senha= '" + usua.getSenha() + "'");
-        }
         return usua;
     }
 

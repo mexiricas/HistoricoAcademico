@@ -9,6 +9,7 @@ import br.com.dao.PessoaDao;
 import br.com.dao.UsuarioDao;
 import br.com.modelo.Pessoas;
 import br.com.modelo.Usuario;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,8 +17,9 @@ import java.util.List;
  *
  * @author Denis
  */
-public class Utilidades {
+public class Utilidades implements Serializable {
 
+    private static final long serialVersionUID = 1L;
     private PessoaDao alDao = new PessoaDao();
     private UsuarioDao usDao = new UsuarioDao();
 

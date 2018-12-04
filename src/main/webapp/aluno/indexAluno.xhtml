@@ -1,0 +1,31 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition template="/template/templateAluno.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui">
+
+    <ui:define name="principal">
+        <h:form>
+            <h2 class="text-center alert-warning"><h:outputLabel value="SEJA BEM VINDO ALUNO" /></h2>
+                <p:panel style="margin-bottom: 30px;"> 
+                    <h:panelGrid columns="1" id="al">
+                        <h:outputLabel value="Nome do Aluno:"></h:outputLabel>
+                        <p:outputLabel id="nm" value="#{usuBean.usu.cpf.nome}" class="text-uppercase"/>
+                        <h:outputLabel value="CPF:"></h:outputLabel>
+                        <p:outputLabel id="cd" value="#{usuBean.usu.cpf.cpf}" />
+
+                        <h:outputLabel value="Telefone:"></h:outputLabel>
+                        <p:outputLabel  value="#{usuBean.usu.cpf.telefone}"/> 
+                    </h:panelGrid>
+                    <p:separator/>
+                    <p:commandButton value="Gravar" action="#{cursoBeans.inserirCurso()}"></p:commandButton>
+                    <p:commandButton value="SAIR" action="#{usuBean.sair()}" class="text-center btn-danger" style="float:  right"/>  
+                </p:panel>
+                 
+        </h:form>
+    </ui:define>
+
+</ui:composition>

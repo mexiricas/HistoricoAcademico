@@ -77,12 +77,12 @@
             <artifactId>postgresql</artifactId>
             <version>42.2.4</version>
         </dependency>
-        <!-- Manipulação de XML -->
-        <dependency>
-            <groupId>jdom</groupId>
-            <artifactId>jdom</artifactId>
-            <version>1.1</version>
-        </dependency>
+		<!-- add the JDBC Driver -->
+		<dependency>
+			<groupId>com.microsoft.sqlserver</groupId>
+			<artifactId>mssql-jdbc</artifactId>
+			<version>7.0.0.jre8</version>
+		</dependency>
     </dependencies>
 
     <build>

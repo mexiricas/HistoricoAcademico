@@ -11,19 +11,18 @@
     <ui:define name="principal">
         <div class="container">
             <h:form>
-                <legend>Cadastro de Cursos</legend>
+            <legend>Cadastro de Cursos</legend>
                 <p:panel style="margin-bottom: 30px;"> 
                     <h:selectOneMenu styleClass="form-control" value="#{cursoBeans.cr}" converter="omnifaces.SelectItemsConverter">
-                        <f:selectItem noSelectionOption="true"
-                                      itemLabel="Selecione curso para ser editado" />
+                        <f:selectItem noSelectionOption="true" itemLabel="Selecione curso para ser editado" />
                         <f:selectItems value="#{cursoBeans.lscursos}" var="cur"
                                        itemValue="#{cur}" itemLabel="#{cur}" />
+                      <p:ajax listener="#{cursoBeans.selectDisc(cur)}" update="grid" />
                     </h:selectOneMenu>
                     <p:separator/>
                     <legend>Disciplinas relacionadas ao curso</legend>
-                    <h3>Grid Layout</h3>
-                    <h:selectManyCheckbox id="grid" value="#{cursoBeans.cr}" layout="grid" >
-                        <f:selectItems value="#{cursoBeans.lsdisc}" var="cur" itemLabel="#{cur}" itemValue="#{cur}" />
+                    <h:selectManyCheckbox id="grid" value="#{cursoBeans.cr}" layout="grid" converter="omnifaces.SelectItemsConverter">
+                        <f:selectItems value="#{cursoBeans.cr.disciplinaList}" var="cur" itemLabel="#{cur}" itemValue="#{cur}" />
                     </h:selectManyCheckbox>
 
                     <p:commandButton value="Gravar" action="#{cursoBeans.inserirCurso()}"></p:commandButton>

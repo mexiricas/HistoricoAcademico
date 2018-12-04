@@ -89,7 +89,7 @@ public class Tbcurso implements Serializable {
         return nome;
     }
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "tbcurso", fetch = FetchType.EAGER)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "tbcurso", fetch = FetchType.LAZY)
     private List<Disciplina> disciplinaList = new ArrayList<Disciplina>();
 
     public List<Disciplina> getDisciplinaList() {
